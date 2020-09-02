@@ -6,7 +6,9 @@ const connectionString = process.env.DATABASE_URL;
 if (!connectionString) {
   throw new Error("set DATABASE_URL");
 }
+if (process.env.NODE_ENV === "development") {
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+}
 
 module.exports = new Pool({
   connectionString,
